@@ -9,7 +9,7 @@ const Notes = (props) => {
     useEffect(() => {
         getNotes()
         // eslint-disable-next-line
-    }, [notes])
+    }, [])
     const ref = useRef(null)
     const refClose = useRef(null)
     const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" })
@@ -24,6 +24,7 @@ const Notes = (props) => {
         editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click();
         props.showAlert('Updated the notes successfully','success')
+        getNotes();
     }
 
     const onChange = (e) => {
@@ -72,9 +73,9 @@ const Notes = (props) => {
             <div className="row mx-1">
                 <h2>Your Notes</h2>
                 <div className="container mx-2">
-                    {notes.length===0 && 'No notes to display'}
+                    {notes===null && 'No notes to display'}
                 </div>
-                {notes.map((note) => {
+                {notes!==null && notes.map((note) => {
                     return <Noteitem key={note._id} updateNote={updateNote} note={note} showAlert={props.showAlert}/>
                 })}
             </div>
