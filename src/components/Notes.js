@@ -6,10 +6,6 @@ import AddNote from './AddNote';
 const Notes = (props) => {
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
-    useEffect(() => {
-        getNotes()
-        // eslint-disable-next-line
-    }, [])
     const ref = useRef(null)
     const refClose = useRef(null)
     const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" })
