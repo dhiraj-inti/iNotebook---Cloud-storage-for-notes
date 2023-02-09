@@ -19,5 +19,5 @@ app.get('/', async (req,res)=> {
 
 
 app.listen(port, () => {
-  console.log(`iNotebook backend listening at http://localhost:${port}`)
+  console.log(`iNotebook backend listening at http://13.127.185.9:${port}`)
 })

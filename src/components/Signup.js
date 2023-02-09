@@ -11,7 +11,7 @@ const Signup = (props) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if (user.password === user.cpassword) {
-            const response = await fetch("http://localhost:5000/api/auth/createuser", {
+            const response = await fetch("http://13.127.185.9:5000/api/auth/createuser", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
