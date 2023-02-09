@@ -17,13 +17,13 @@ const Notes = (props) => {
     const updateNote = (currentNote) => {
         ref.current.click();
         setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
-        
+
     }
 
     const handleClick = (e) => {
         editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click();
-        props.showAlert('Updated the notes successfully','success')
+        props.showAlert('Updated the notes successfully', 'success')
         getNotes();
     }
 
@@ -33,7 +33,7 @@ const Notes = (props) => {
 
     return (
         <>
-            <AddNote showAlert={props.showAlert}/>
+            <AddNote showAlert={props.showAlert} />
             <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -72,12 +72,16 @@ const Notes = (props) => {
 
             <div className="row mx-1">
                 <h2>Your Notes</h2>
-                <div className="container mx-2">
-                    {notes===null && 'No notes to display'}
-                </div>
-                {notes!==null && notes.map((note) => {
-                    return <Noteitem key={note._id} updateNote={updateNote} note={note} showAlert={props.showAlert}/>
-                })}
+                {notes === [] ?
+                    <div className="container mx-2 row">
+                        <h5>No notes to display</h5>
+                    </div> :
+                    <div className="container row">
+                        {notes.map((note) => {
+                            return <Noteitem key={note._id} updateNote={updateNote} note={note} showAlert={props.showAlert} />
+                        })}
+                    </div>}
+
             </div>
 
         </>
