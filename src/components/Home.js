@@ -7,11 +7,14 @@ export const Home = (props) => {
     let history = useHistory();
     const context = useContext(noteContext);
     const {getNotes} = context;
-    useEffect(async () => {
-        if(!localStorage.getItem('token')){
-            history.push('/login')
+    useEffect(() => {
+        async function init(){
+            if(!localStorage.getItem('token')){
+                history.push('/login')
+            }
+            await getNotes();
         }
-        await getNotes();
+        init();
         // eslint-disable-next-line
     }, [])
     return (
