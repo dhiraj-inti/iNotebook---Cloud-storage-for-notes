@@ -21,8 +21,7 @@ const Signup = (props) => {
             const json = await response.json()
             if(json.success){
                 props.showAlert("User registered successfully",'success')
-                localStorage.setItem('token',json.authToken);
-                history.push("/");
+                history.push("/login");
             }
             else{
                 props.showAlert("User already exists",'danger')
