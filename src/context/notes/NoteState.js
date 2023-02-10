@@ -34,7 +34,9 @@ const NoteState = (props) => {
     });
 
     const note = await response.json();
-    setNotes(notes.concat(note))
+    notes.push(note);
+    setNotes(notes);
+    getNotes();
   }
 
   // Delete a Note
@@ -50,6 +52,7 @@ const NoteState = (props) => {
     const json = response.json(); 
     const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes)
+    getNotes();
   }
 
   // Edit a Note
@@ -77,6 +80,7 @@ const NoteState = (props) => {
       }
     }  
     setNotes(newNotes);
+    getNotes()
   }
 
   return (
