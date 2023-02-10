@@ -68,11 +68,11 @@ const Notes = (props) => {
 
             <div className="row mx-1">
                 <h2>Your Notes</h2>
-                {notes.length === 0 ? <p>No notes to display</p> : <div className="container row">
+                {(notes && notes.length > 0) ? <div className="container row">
                     {notes.map((note) => {
                         return <Noteitem key={note._id} updateNote={updateNote} note={note} showAlert={props.showAlert} />
                     })}
-                </div>}
+                </div> : <p>No notes to display</p>}
             </div>
 
         </>
